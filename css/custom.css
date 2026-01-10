@@ -1,0 +1,316 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); */
+*{
+    font-family: 'Poppins',sans-serif;
+    font-size:0.9rem;
+}
+
+.scrollablelist{
+    height:calc(100vh - 250px);
+    overflow-y:scroll;
+    border:1px solid #c1c1c1;
+    background-color: white;  
+    text-transform:capitalize;
+}
+
+.scrollableimport{
+  height:calc(100vh - 350px);
+  overflow-y:scroll;
+  border:1px solid #c1c1c1;
+  background-color: white;  
+  text-transform:capitalize;
+}
+
+.scrollablelist-small{
+    height:calc(100vh - 450px);
+}
+
+select {
+    padding:0.2em;
+} 
+
+.user-wrapper h4{
+    text-transform:capitalize !important;
+    font-size:1rem;
+}
+
+.scrollableprivilege {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.containergroup .card-header {
+    height: 30px;
+    padding: 5px 5px;
+}
+
+.containergroup .card-header h5{
+    font-size:  1rem!important;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+label.active {
+    /* color: #333; */
+    background-color: rgb(220,53,69)!important;
+    border-color: rgb(220,53,69)!important;
+}
+
+.clientslistreview {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    height: calc(100vh - 350px);
+}
+
+.bootbox .modal-header h4{
+    font-size: 1.2rem;
+}
+
+.small-image{
+    height:30px;
+    border-radius: 2px;
+}
+
+.scrollable{
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1rem; */
+    height:calc(100vh - 350px);
+    overflow-y:scroll;
+    border:1px solid rgb(205, 203, 203);
+} 
+
+.scrollable-big{
+    height:calc(100vh - 320px);
+}
+
+.scrollable-small{
+    height:calc(100vh - 530px);
+}
+
+.scrollable-extrasmall{
+    height:200px;
+}
+
+.scrollable-tiny{
+  /* height:180px; */
+  height:calc(100vh - 680px)
+}
+
+.scrollablelist-tiny{
+    height:100px;
+}
+
+.scrollable-fulltable{
+    height:calc(100vh - 280px);
+}
+
+.scrollable-fullheight{
+    height:calc(100vh - 210px);
+}
+
+.buttons{
+    margin-top: 43px;
+}
+
+.date-control:disabled, .date-control[readonly] {
+    background-color: #fff;
+    opacity: 1;
+}
+
+.grayed{
+  background-color: #e9ecef !important;
+}
+/* #loanslist{
+    height: calc(100vh - 270px);
+    overflow-y: scroll;
+} */
+#loanslist th{
+  position: sticky;
+}
+
+#main-content-card{
+  min-height: calc(100vh - 90px);
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  /* formatting the chart of accounts accordion */
+.myaccordion {
+    max-width: 500px;
+    margin: 10px auto;
+    box-shadow: 0 0 1px rgba(0,0,0,0.1);
+    
+  }
+
+  .myaccordion .card-header {
+    border-bottom:1px solid #EDEFF0;
+    background: transparent;
+    display: block !important;
+  }
+   
+  .myaccordion .card,
+  .myaccordion .card:last-child .card-header {
+    border: none;
+  }
+
+  .myaccordion .card-header button{
+    background-color: transparent;
+    border: none;
+  }
+
+
+  .myaccordion .fa-stack {
+    font-size: 15px;
+  }
+   
+  .myaccordion .btn {
+    width: 100%;
+    font-weight: bold;
+    color: #004987;
+    padding: 0;
+  }
+   
+  .myaccordion .btn-link:hover,
+  .myaccordion .btn-link:focus {
+    text-decoration: none;
+  }
+   
+  .myaccordion li + li {
+    margin-top: 10px;
+  }
+
+  .institutionlogo{
+    height:235px;
+  }
+
+
+  #clientslist3 {
+    width: 100%;
+    padding: 1em;
+    text-align: left;
+    height: calc(100vh - 350px);
+    border:2px solid black;
+    overflow-y: scroll;
+    
+  }
+
+  #clientslist3 li:hover{
+    background: #004987;
+    color: #fff;
+    cursor: pointer;
+  }
+
+
+  #clientslist3 li .active{
+    background: #004987;
+    color: #fff;
+  }
+
+  #clientslist4 {
+    width: 100%;
+    padding: 1em;
+    text-align: left;
+    height: calc(100vh - 350px);
+    border:2px solid black;
+    overflow-y: scroll;
+    
+  }
+
+  #clientslist4 li:hover{
+    background: #004987;
+    color: #fff;
+    cursor: pointer;
+  }
+
+
+  #clientslist4 li .active{
+    background: #004987;
+    color: #fff;
+  }
+
+  /* Customize bootbox body */
+  .bootbox-body{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /* Make drop down menu width same size as it's button */
+  .dropdown-menu {
+    min-width: 100%;
+  }
+  
+  /* Adjust padding if needed */
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Editable table cell  */
+  .editable-cell {
+    cursor: pointer;
+  }
+  .editable-cell:focus {
+    outline: 2px solid #007bff;
+    background: #fff;
+    border-radius: 3px;
+  }
+
+  /* Requisition search results */
+  #searchproducts{
+      position:absolute; top:20px;
+      background:#fff;
+      width:100%;
+      /* min-height:200px; */
+
+  }  
+  
+  ul.searchresults{
+    list-style: none;
+    padding:3px;
+    border: 1px solid lightslategray;
+    margin-top:0px;
+    width:100%;
+  }
+
+  ul.searchresults li:hover{
+      color:white;
+      background:green;
+  }
+
+  /* .scrollable{
+      height:400px;
+      overflow-y:scroll;
+  } */
+
+  /* Payroll report format */
+
+  /* jquery-ui date-picker to come infront of modal input group */
+  .ui-datepicker {
+    z-index: 99999 !important;
+  }
+  
