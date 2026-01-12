@@ -109,23 +109,35 @@
                                            
                                             <h4 class="text-dark text-center mb-2"><strong>Make a Payment</strong></h4>
                                             <div class="row mb-2">
+                                                <!-- First row for small screens -->
                                                 <div class="col col-form-group">
                                                     <label for="modeofpayment">Mode of Pay</label>
                                                     <select name="modeofpayment" id="modeofpayment" class="form-control form-control-sm">
                                                         <option value="">&lt;Choose&gt;</option>
-                                                       
                                                     </select>
                                                 </div>
-                                                <div class="col col-from-group">
+                                                <div class="col col-form-group">
                                                     <label for="reference">Reference</label>
                                                     <input type="text" name="reference" id="reference" class="form-control form-control-sm">
                                                 </div>
                                                 <div class="col col-form-group">
-                                                    <label for="paycurrency">currency</label>
+                                                    <label for="paycurrency">Currency</label>
                                                     <select name="paycurrency" id="paycurrency" selectedvalue="1" class="form-control form-control-sm">
                                                         <option value="">&lt;Choose&gt;</option>
                                                     </select>
                                                 </div>
+                                                <!-- <div class="col-12 col-md-2 col-form-group">
+                                                    <label for="exchangerate">Ex.rate</label>
+                                                    <input type="text" name="exchangerate" id="exchangerate" class="form-control form-control-sm" value="1">
+                                                </div>
+                                                <div class="col-12 col-md-2 col-form-group">
+                                                    <label for="paydate">Paydate</label>
+                                                    <input type="text" name="paydate" id="paydate" class="form-control form-control-sm">
+                                                </div> -->
+                                            </div>
+
+                                            <div class="row mb-2">
+                                        
                                                 <div class="col col-form-group">
                                                     <label for="exchangerate">Ex.rate</label>
                                                     <input type="text" name="exchangerate" id="exchangerate" class="form-control form-control-sm" value="1">
@@ -140,15 +152,19 @@
                                                     <div class="input-group">
                                                         <input type="text" id="manualamount" name="manualamount" class="form-control form-control-sm">
                                                         <div class="input-group-append">
-                                                            <button type="button" class="btn btn-primary btn-sm" id="distributeamount" name="distributeamount" class="form-control form-control-sm">Distribute<i class="fas fa-chart-network fa-lg fa-fw"></i></button> 
-                                                            <button type="button" class="btn btn-success btn-sm ml-2" id="addpayment" name="addpayment" class="form-control form-control-sm">Save <i class="fal fa-save fa-fw fa-lg"></i> </button>
+                                                            <button type="button" class="btn btn-primary btn-sm" id="distributeamount" name="distributeamount">
+                                                                <i class="fas fa-chart-network fa-lg fa-fw"></i> Distribute
+                                                            </button>
+                                                            <!-- <label for="totalpayment" class="d-none d-md-block">&nbsp;</label> -->
+                                                            <button type="button" class="btn btn-success btn-sm " id="addpayment" name="addpayment">
+                                                                Save <i class="fal fa-save fa-fw fa-lg"></i>
+                                                            </button>
                                                         </div>
                                                     </div>
-
-                                                    <!-- <button type="button" class="btn btn-success btn-sm" id="addpayment" name="addpayment" class="form-control form-control-sm">Save <i class="fal fa-save fa-fw fa-lg"></i> </button> -->
-                                                    
                                                 </div>
-
+                                                <!-- <div class="col col-form-group">
+                                                    
+                                                </div> -->
                                             </div>
                                             <!-- <div class="row mt-2">
                                                 
@@ -167,20 +183,6 @@
                                         </div>
                                     </div>
 
-                                    <!--View the invoices  -->
-                                    <!-- <div class="mt-4">
-                                        <div class="row">
-                                            <div class="col col-md-2">
-                                                <select name="filterpaymentstatus" id="filterpaymentstatus" class="form-control form-control-sm">
-                                                    <option value="all">&lt;All&gt;</option>
-                                                    <option value="active">Active</option>
-                                                    <option value="paid">Paid</option>
-                                                    <option value="pending">Pending</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                    </div> -->
                             </div>
                         <!-- End of Payments Tab -->
                         <!-- Transactions Tab -->

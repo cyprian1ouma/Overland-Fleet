@@ -504,7 +504,7 @@ $(document).ready(function(){
             addpaymentbutton.attr('title', '').css({ cursor: 'pointer', opacity: '1'});
             setTimeout(()=>{
                 addpaymentbutton.prop('disabled', true)
-            },10000)
+            },5000)
     
         } else {
             paymentnotifications.html(showAlert("info", "Please provide a valid amount to distribute."))
@@ -575,7 +575,7 @@ $(document).ready(function(){
         } else if (modeofpayment === "") {
             errors = 'Please Provide the Mode of Payment.';
             modeofpaymentfield.focus();
-        }else if (paidinvoicestable.find("tbody tr").length == 0) {
+        }else if (paidinvoicestable.find("tbody tr").length === 0) {
             errors = 'No Invoices to Pay for the Selected Client.';
             modeofpaymentfield.focus();
         }

@@ -202,7 +202,8 @@ $(document).ready(function(){
                         results += `<td>${client.transactdate}</td>`
                         results += `<td>${client.Ref}</td>`
                         results += `<td>${client.naration}</td>`
-                        results += `<td>${$.number(client.amount)}</td>`
+                        results += `<td>${client.amount < 0 ? '(' + $.number(Math.abs(client.amount), 2) + ')' : $.number(client.amount, 2)}</td>`
+                        // results += `<td>${$.number(client.amount)}</td>`
                         // results += `<td>${client.amountdue}</td>`
                         results += `<tr>`
                       })

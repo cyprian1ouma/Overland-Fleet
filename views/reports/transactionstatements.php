@@ -297,7 +297,13 @@ $statement_period = date('d/m/Y', strtotime($startdate)) . " - " . date('d/m/Y',
               <td><?php echo htmlspecialchars($transaction['transactdate'] ?? '') ?></td>
               <td><?php echo htmlspecialchars($transaction['Ref'] ?? '') ?></td>
               <td><?php echo htmlspecialchars($transaction['naration'] ?? '') ?></td>
-              <td><?php echo number_format(floatval($transaction['amount'] ?? 0), 2) ?></td>
+              <td><?php
+                  $amount = floatval($transaction['amount'] ?? 0);
+                  echo ($amount < 0) 
+                    ? '('.number_format(abs($amount), 2).')'
+                    : number_format($amount, 2);
+              ?>
+              </td>
             </tr>
           <?php endforeach; ?>
         <?php endif; ?>
