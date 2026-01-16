@@ -596,7 +596,9 @@ require_once(__DIR__ . '/../../models/db.php');
               </div>
               <div class="info-cell">
                 <p class="info-label">Date</p>
-                <p class="info-value"><?= $header['invoicedate'] ?></p>
+                <p class="info-value">
+                  <?= date('jS - M - Y', strtotime($header['invoicedate'])) ?>
+                </p>
               </div>
             </div>
 
