@@ -324,8 +324,6 @@ $(document).ready(function(){
                     clientid,
                     invoicedate: formattedDate,
                     oldinvoiceno,
-                    // currency,
-                    // rate,
                     invoiceditems: JSON.stringify(invoiceditems) 
                 },
                 (data) => {

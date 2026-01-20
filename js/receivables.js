@@ -80,6 +80,8 @@ $(document).ready(function(){
 
     clientslistview1.on("click", "li", function() {
         const selectedclientid = $(this).data("clientid")
+        //  console.log(selectedclientid);
+         
         clientidhidden.val(selectedclientid)
         $.getJSON(
             "../controllers/receivablesoperations.php",
@@ -98,7 +100,7 @@ $(document).ready(function(){
                     balancedue1dfield.text(clientDetails.amountdue)
 
                     data.forEach((client, i) => {
-                        results += `<tr data-clientid='${client.clientid}'>`
+                        results += `<tr data-clientid='${client.clientid}' data-invoiceid ='${client.invoiceid}'>`
                         results += `<td>${Number(i + 1)}</td>`
                         results += `<td>${client.invoicedate}</td>`
                         results += `<td>${client.invoiceno}</td>`
@@ -558,11 +560,13 @@ $(document).ready(function(){
             if (selectedcheckbox.is(':checked')) {
                 const clientid = $row.data('clientid'),
                 invoiceno = $row.find('td').eq(2).text(),
-                amount = $row.find('td').eq(6).text().replace(",", "")
+                amount = $row.find('td').eq(6).text().replace(",", ""),
+                invoiceid = $row.data('invoiceid');
         
                 // Push each paid item to the array
-                paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount})
+                paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount, "invoiceid": invoiceid });
                 console.log(invoiceno);
+                console.log(invoiceid);
                 
 
             }
@@ -686,7 +690,7 @@ $(document).ready(function(){
                 getallreceipts: true
             },
             (data)=>{
-                console.log(data)
+                // console.log(data)
                 let results = ""
                 data.forEach((receipt, i) => {
                     results += `<tr data-receiptid='${receipt.receiptid}'>`                      

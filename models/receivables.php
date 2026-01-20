@@ -13,13 +13,6 @@
         function getallinvoicedclientsdetails($clientid){
             $sql = "CALL `sp_getallinvoicedclientsdetails`({$clientid})";
             return $this->getJSON($sql);
-                //SQL for debugging
-                // error_log("SQL Query:  $sql");
-
-                // Log the result for debugging
-                // error_log("Query Result: " . $result);
-
-                // return $result;
         }
 
         function getmultipleinvoices(){
@@ -49,8 +42,8 @@
 
 
 
-        function savetempreceipts($refno,$invoiceno,$amount){
-            $sql = "CALL `sp_savetempreceipts`('{$refno}','{$invoiceno}',{$amount})";
+        function savetempreceipts($refno,$invoiceid,$invoiceno,$amount){
+            $sql = "CALL `sp_savetempreceipts`('{$refno}',{$invoiceid},'{$invoiceno}',{$amount})";
             //echo $sql.PHP_EOL;
             $this->getData($sql);
             return "success";

@@ -9,10 +9,9 @@
     }
 
     if (isset($_GET['getallinvoicedclientsdetails'])) {
-        // Ensure that 'selectedclientid' is passed
         if (isset($_GET['selectedclientid'])) {
-            $clientid = $_GET['selectedclientid'];  // Fetch the selected client ID
-            echo $receivables->getallinvoicedclientsdetails($clientid);  // Call the method with the client ID
+            $clientid = $_GET['selectedclientid'];  
+            echo $receivables->getallinvoicedclientsdetails($clientid);  
         } else {
             echo json_encode(["error" => "Client ID not provided."]);
         }
@@ -121,7 +120,8 @@
             foreach ($paiditems as $item) {
                 $invoiceno = $item['invoiceno'];
                 $amount = $item['amount'];
-                $response = $receivables->savetempreceipts($refno,$invoiceno,$amount);
+                $invoiceid = $item['invoiceid'];
+                $response = $receivables->savetempreceipts($refno,$invoiceid,$invoiceno,$amount);
                 $responses[] = $response;
             }
 
