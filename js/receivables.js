@@ -506,7 +506,7 @@ $(document).ready(function(){
             addpaymentbutton.attr('title', '').css({ cursor: 'pointer', opacity: '1'});
             setTimeout(()=>{
                 addpaymentbutton.prop('disabled', true)
-            },5000)
+            },10000)
     
         } else {
             paymentnotifications.html(showAlert("info", "Please provide a valid amount to distribute."))
