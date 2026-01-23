@@ -42,9 +42,24 @@
 
 
 
+        // function savetempreceipts($refno,$invoiceid,$invoiceno,$amount){
+        //     $sql = "CALL `sp_savetempreceipts`('{$refno}',{$invoiceid},'{$invoiceno}',{$amount})";
+        //     //echo $sql.PHP_EOL;
+        //     $this->getData($sql);
+        //     return "success";
+        // }
+
+        // // save single and multiple payments 
+        // function savereceipts($refno,$clientid,$receiptdate,$modeofpayment,$reference,$paycurrency,$exchangerate){
+        //     $receiptdate=$this->mySQLDate($receiptdate);
+        //     $sql = "CALL `sp_savereceipts`('{$refno}',{$clientid},'{$receiptdate}',{$modeofpayment},'{$reference}',{$paycurrency}, {$exchangerate}, {$this->userid})";
+        //     // echo $sql;
+        //     $this->getData($sql);
+        //     return ["status"=>"success","message"=>"success"];
+        // }
+
         function savetempreceipts($refno,$invoiceid,$invoiceno,$amount){
             $sql = "CALL `sp_savetempreceipts`('{$refno}',{$invoiceid},'{$invoiceno}',{$amount})";
-            //echo $sql.PHP_EOL;
             $this->getData($sql);
             return "success";
         }

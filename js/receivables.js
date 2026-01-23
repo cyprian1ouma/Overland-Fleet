@@ -540,16 +540,109 @@ $(document).ready(function(){
     // })
 
     
+    // addpaymentbutton.on('click', function() {
+    //     manualpaycheckbox.prop('checked', false)
+    //     const clientid = clientidhidden.val(),
+    //         modeofpayment = modeofpaymentfield.val(),
+    //         reference = sanitizestring(referencefield.val()),
+    //         paycurrency = paymentcurrencyfield.val(),
+    //         exchangerate = exchangeratefield.val(),
+    //         receiptdate = paydatefield.val(),
+    //         manualamount = paidinvoicestable.find("td").eq(6).text().replace(",", ""),
+    //         paiditems = [];
+
+    //     let errors = '';
+    
+    //     // Iterating over rows in the table and collecting data
+    //     paidinvoicestable.find('tbody tr').each(function() {
+    //         const $row = $(this).closest('tr'),
+    //         selectedcheckbox = $row.find('.selectedcheckbox')
+    //         if (selectedcheckbox.is(':checked')) {
+    //             const clientid = $row.data('clientid'),
+    //             invoiceno = $row.find('td').eq(2).text(),
+    //             amount = $row.find('td').eq(6).text().replace(",", ""),
+    //             invoiceid = $row.data('invoiceid');
+        
+    //             // Push each paid item to the array
+    //             paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount, "invoiceid": invoiceid });
+    //             console.log(invoiceno);
+    //             console.log(invoiceid);
+                
+
+    //         }
+           
+    //     })
+        
+    //     // Make sure we have selected invoices before proceeding
+    //     if (paiditems.length === 0) {
+    //         errors = 'Please Select a Client'
+    //     } else if (modeofpayment === "") {
+    //         errors = 'Please Provide the Mode of Payment.';
+    //         modeofpaymentfield.focus();
+    //     }else if (paidinvoicestable.find("tbody tr").length === 0) {
+    //         errors = 'No Invoices to Pay for the Selected Client.';
+    //         modeofpaymentfield.focus();
+    //     }
+    //     else if (paycurrency === "") {
+    //         errors = 'Please Provide the Currency to Use.';
+    //         paycurrencyfield.focus();
+    //     } else if (manualamount === 0) {
+    //         errors = 'Please Provide the Amount you want to pay.';
+    //         manualamountfield.focus();
+    //     } else if (exchangerate === "") {
+    //         errors = 'Please Provide the Currency Exchange Rate.';
+    //         exchangeratefield.focus();
+    //     }
+    
+    //     if (!errors) {
+    //         $.post(
+    //             "../controllers/receivablesoperations.php",
+    //             {
+    //                 savereceipts: true,
+    //                 clientid:clientid,
+    //                 receiptdate,
+    //                 modeofpayment,
+    //                 reference,
+    //                 paycurrency,
+    //                 exchangerate,
+    //                 paiditems: JSON.stringify(paiditems) 
+    //             },
+    //             (data) => {
+    //                 if (isJSON(data)) {
+    //                     data = JSON.parse(data);
+    //                     if (data.status === "success") {
+    //                         paymentnotifications.html(showAlert("success", "Success! The Invoices/Invoice were paid successfully"))
+    //                         setTimeout(()=>{
+    //                             paymentnotifications.html("")
+    //                             if(printreceiptcheckbox.is(':checked')){
+    //                                 window.open(`../reports/receipt.php?receiptid=${data.receiptid}`, '_blank');
+    //                             }
+    //                             // location.reload()
+    //                         },2000)
+    //                     } else if (data.status === "exists") {
+    //                         paymentnotifications.html(showAlert("info", "Sorry, the invoices have already been paid"))
+    //                     }
+    //                 } else {
+    //                     paymentnotifications.html(showAlert("danger", `Sorry, an error has occurred: ${data}`))
+    //                 }
+                    
+    //             }
+    //         )
+    //     } else {
+    //         paymentnotifications.html(showAlert("info", errors))
+    //     }
+    // })
+
     addpaymentbutton.on('click', function() {
         manualpaycheckbox.prop('checked', false)
         const clientid = clientidhidden.val(),
-            modeofpayment = modeofpaymentfield.val(),
-            reference = sanitizestring(referencefield.val()),
-            paycurrency = paymentcurrencyfield.val(),
-            exchangerate = exchangeratefield.val(),
-            receiptdate = paydatefield.val(),
-            manualamount = paidinvoicestable.find("td").eq(6).text().replace(",", ""),
-            paiditems = [];
+        modeofpayment = modeofpaymentfield.val(),
+        reference = sanitizestring(referencefield.val()),
+        paycurrency = paymentcurrencyfield.val(),
+        exchangerate = exchangeratefield.val(),
+        receiptdate = paydatefield.val(),
+        manualamount = manualamountfield.val(),
+        paiditems = [];
 
         let errors = '';
     
@@ -562,31 +655,28 @@ $(document).ready(function(){
                 invoiceno = $row.find('td').eq(2).text(),
                 amount = $row.find('td').eq(6).text().replace(",", ""),
                 invoiceid = $row.data('invoiceid');
-        
+
                 // Push each paid item to the array
-                paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount, "invoiceid": invoiceid });
-                console.log(invoiceno);
-                console.log(invoiceid);
-                
+                // paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount})
+                paiditems.push({ "clientid":clientid,"invoiceno": invoiceno, "amount": amount, "invoiceid": invoiceid })
 
             }
            
         })
         
-        // Make sure we have selected invoices before proceeding
         if (paiditems.length === 0) {
             errors = 'Please Select a Client'
         } else if (modeofpayment === "") {
             errors = 'Please Provide the Mode of Payment.';
             modeofpaymentfield.focus();
-        }else if (paidinvoicestable.find("tbody tr").length === 0) {
+        }else if (paidinvoicestable.find("tbody tr").length == 0) {
             errors = 'No Invoices to Pay for the Selected Client.';
             modeofpaymentfield.focus();
         }
         else if (paycurrency === "") {
             errors = 'Please Provide the Currency to Use.';
             paycurrencyfield.focus();
-        } else if (manualamount === 0) {
+        } else if (manualamount == "") {
             errors = 'Please Provide the Amount you want to pay.';
             manualamountfield.focus();
         } else if (exchangerate === "") {
@@ -617,7 +707,7 @@ $(document).ready(function(){
                                 if(printreceiptcheckbox.is(':checked')){
                                     window.open(`../reports/receipt.php?receiptid=${data.receiptid}`, '_blank');
                                 }
-                                // location.reload()
+                                location.reload()
                             },2000)
                         } else if (data.status === "exists") {
                             paymentnotifications.html(showAlert("info", "Sorry, the invoices have already been paid"))

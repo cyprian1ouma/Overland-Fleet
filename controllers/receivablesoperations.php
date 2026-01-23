@@ -99,7 +99,42 @@
 
 
     // save the invoices temporarily
+    // if (isset($_POST['savereceipts'])) {
+    //     $clientid = $_POST['clientid'];
+    //     $modeofpayment = $_POST['modeofpayment'];
+    //     $reference = $_POST['reference'];
+    //     $paycurrency = $_POST['paycurrency'];
+    //     $exchangerate = $_POST['exchangerate'];
+    //     $receiptdate = $_POST['receiptdate'];
+    //     $paiditems = json_decode(stripcslashes($_POST['paiditems']), true);
+    //     $refno = hash('md5', $receivables->uniqidReal(10));
+
+    //     // Check for any JSON errors
+    //     if (json_last_error() !== JSON_ERROR_NONE) {
+    //         echo json_encode(['status' => 'error', 'message' => 'Invalid JSON']);
+    //         return;
+    //     }
+
+    //     if (is_array($paiditems) && count($paiditems) > 0) {
+    //         $responses = [];
+    //         foreach ($paiditems as $item) {
+    //             $invoiceno = $item['invoiceno'];
+    //             $amount = $item['amount'];
+    //             $invoiceid = $item['invoiceid'];
+    //             $response = $receivables->savetempreceipts($refno,$invoiceid,$invoiceno,$amount);
+    //             $responses[] = $response;
+    //         }
+
+    //         $response = $receivables->savereceipts($refno,$clientid,$receiptdate,$modeofpayment,$reference,$paycurrency,$exchangerate);
+    //         echo json_encode(['status' => 'success', 'message' => 'Invoices paid successfully', 'data' => $response]);
+    //     } else {
+    //         echo json_encode(['status' => 'error', 'message' => 'Invalid invoice data']);
+    //     }
+    // }
+
     if (isset($_POST['savereceipts'])) {
+        // Decode the JSON data for selected invoices
+        // var_dump($_POST);
         $clientid = $_POST['clientid'];
         $modeofpayment = $_POST['modeofpayment'];
         $reference = $_POST['reference'];
@@ -107,6 +142,8 @@
         $exchangerate = $_POST['exchangerate'];
         $receiptdate = $_POST['receiptdate'];
         $paiditems = json_decode(stripcslashes($_POST['paiditems']), true);
+
+        // generate refno (reference number) using uniqidReal() and hash it
         $refno = hash('md5', $receivables->uniqidReal(10));
 
         // Check for any JSON errors
@@ -115,19 +152,32 @@
             return;
         }
 
+        // Ensure the selected invoices array is not empty
         if (is_array($paiditems) && count($paiditems) > 0) {
+            // Initialize a response array
             $responses = [];
+
+            // Loop through each selected invoice and save temporarily
             foreach ($paiditems as $item) {
                 $invoiceno = $item['invoiceno'];
                 $amount = $item['amount'];
                 $invoiceid = $item['invoiceid'];
+
+                // Call the function to save the payment for each invoice
+                // $response = $receivables->savetempreceipts($refno,$invoiceno,$amount);
                 $response = $receivables->savetempreceipts($refno,$invoiceid,$invoiceno,$amount);
+
+                // Collect responses for each invoice
                 $responses[] = $response;
             }
 
+            // Save permanently
             $response = $receivables->savereceipts($refno,$clientid,$receiptdate,$modeofpayment,$reference,$paycurrency,$exchangerate);
+
+            // After processing all invoices, you can return a success response
             echo json_encode(['status' => 'success', 'message' => 'Invoices paid successfully', 'data' => $response]);
         } else {
+            // If the selected invoices array is empty
             echo json_encode(['status' => 'error', 'message' => 'Invalid invoice data']);
         }
     }
